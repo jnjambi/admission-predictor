@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<style>
+    .navbar-text h1 {
+        color: #fff;
+        font-size: 40px;
+        align-content: center;
+
+    }
+    .footer {
+        padding: 10px 20px;
+        align-content: center;
+
+    }
+    .result {
+        margin: auto;
+        width: 100%;
+        border: 1px solid #ccc;
+        background-color: grey;
+        color: #fff;
+        padding: 20px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        transition: 0.3s;
+        ;
+    }
+
+
+</style>
+    <head>
+        <meta charset="UTF-8">
+        <title> Admission Predictor</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+         <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'> 
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+         
+    </head>
+    <body>
+        <div class="login"></div>
+                <h1>Chances of Admission Predictor</h1>
+            <form method="POST", action="{{ url_for('predict')}}">
+                <label for="gre"> GRE Score(out of 340)</label><br>
+                <input type="text" id="GRE" name="gre" placeholder="Your score.." />
+                <br>
+
+                <label for="toefl"> TOEFL Score(out of 120)</label><br>
+                <input type="text" id="TOEFL" name="toefl" placeholder="Your score.." />
+                <br>
+            
+                <label for="university_rating"> University Rating(out of 5)</label><br>
+                <input type="text" id="universityrating" name="university_rating" placeholder="Your score.." />
+                <br>
+                
+                <label for="statement_of_purpose"> Statement of Purpose(out of 5)</label><br>
+                <input type="text" id="statementofpurpose" name="statement_of_purpose" placeholder="Your score.." />
+                <br>
+                
+                <label for="letter_of-recommendation"> Letter of Recommendation(out of 5)</label><br>
+                <input type="text" id="letterofrecommendation" name="letter_of_recommendation" placeholder="Your score.."/>
+                <br>
+                
+                <label for="cgpa"> CGPA(out of 10)</label><br>
+                <input type="text" id="cgpa" name="cgpa" placeholder="Your score.."/>
+                <br>
+
+                <label for="research"> Research</label><br>
+                <input type="text" id="research" name="research" placeholder="Your score.."/>
+                <br>
+                
+                <br>
+                <input type="submit" value="Predict" class="btn btn-primary">
+                
+            </form>
+
+
+            <br>
+            <br>
+            <div class="result" align="center" >
+                {% if result %} {% for variable, value in original_input.items() %}
+                <b>{{ variable }}</b> : {{ value }} {% endfor %}
+                <br>
+                <h1>Predicted Scores:</h1>
+                <p style="font-size:-150px">{{ result }}</p>
+                {% endif %}
+
+            </div>
+
+            <div class="footer">
+                <p>John Njambi © Project. All rights reserved.</p>
+
+            </div>
+        
+
+        
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" ></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+
+
+
+    </body>
+
+
+</html>
+
+
